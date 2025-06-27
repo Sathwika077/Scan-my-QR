@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Scanner</h1>
+        
+        <div class="scanner-modes">
+            <button id="cameraBtn" class="mode-btn active">Camera Scanner</button>
+            <button id="uploadBtn" class="mode-btn">Upload Image</button>
+        </div>
+
+        <!-- Camera Scanner Section -->
+        <div id="cameraSection" class="scanner-section active">
+            <div class="camera-container">
+                <video id="video" autoplay muted playsinline></video>
+                <canvas id="canvas" style="display: none;"></canvas>
+                <div class="scan-overlay">
+                    <div class="scan-box"></div>
+                </div>
+            </div>
+            <div class="camera-controls">
+                <button id="startBtn" class="control-btn">Start Camera</button>
+                <button id="stopBtn" class="control-btn" disabled>Stop Camera</button>
+                <button id="captureBtn" class="control-btn" disabled>Capture & Scan</button>
+            </div>
+        </div>
+
+        <!-- Upload Scanner Section -->
+        <div id="uploadSection" class="scanner-section">
+            <div class="upload-container">
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📷</div>
+                    <p>Click to upload an image or drag & drop</p>
+                    <p class="upload-hint">Supports: JPG, PNG, GIF</p>
+                </div>
+                <img id="uploadedImage" style="display: none;" alt="Uploaded image">
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="results-section">
+            <h3>Scan Results:</h3>
+            <div id="resultContent" class="result-content">
+                <p class="no-result">No QR code detected yet</p>
+            </div>
+            <button id="copyBtn" class="control-btn" style="display: none;">Copy Result</button>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="status" class="status-message"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
